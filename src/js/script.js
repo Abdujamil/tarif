@@ -72,3 +72,34 @@ cardRass.forEach((card) => {
     console.log("Карточка: Рассрочка");
   };
 });
+
+
+fetch('./tarifs.json')
+.then(response => response.json())
+.then(data => {
+  const container = document.getElementById('tarifs-container');
+  data.forEach(tarif => {
+    const article = document.createElement('article');
+    article.classList.add('tarif__card');
+    article.innerHTML = `
+      <header class="tarif__card-head">
+        <img src="${tarif.imgSrc}" alt="Иконка тарифа" class="tarif__card-icon" />
+        <h3 id="${tarif.id}-title" class="tarif__card-title">${tarif.title}</h3>
+        <p class="tarif__card-description">${tarif.description}</p>
+      </header>
+      <div class="tarif__card-body">
+        <div class="free-block" aria-labelledby="free-block-title">
+          <h4 id="free-block-title" class="free-block__title">${tarif.price}</h4>
+          <p class="free-block__subtitle">${tarif.duration}</p>
+          <button class="free-block__btn">Выбрать</button>
+        </div>
+      </div>
+      <footer class="tarif__card-foot">
+        <ul class="tarif__features">
+          ${tarif.features.map(feature => `<li class="tarif__feature"><span class="tarif__feature-icon"><img src="/src/svg/done.svg" alt="" aria-hidden="true" /></span>${feature}</li>`).join('')}
+        </ul>
+      </footer>
+    `;
+    container.appendChild(article);
+  });
+});

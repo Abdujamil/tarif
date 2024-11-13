@@ -75,6 +75,10 @@ body {
       gap: 24px;
     }
 
+    #tarifs-container{
+      display: flex;
+    }
+
     &__card {
       width: 100%;
       max-width: 100%;
@@ -345,8 +349,9 @@ body {
         display: none;
         position: absolute;
         top: 48px;
-        left: 47%;
-        transform: translateX(-50%);
+        // left: 47%;
+        right: -10px;
+        // transform: translateX(-50%);
         background-color: #000;
         color: #fff;
         padding: 10px;
@@ -385,10 +390,12 @@ body {
 }
 
 @media (min-width: 375px) {
-  .guarantee {
-    .tooltip {
-        top: 60px;
-        left: 60%;
+  .main-content .tarif {
+    .guarantee {
+      .tooltip {
+          right: -5px;
+          top: 55px;
+      }
     }
   }
 }
